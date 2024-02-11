@@ -1,9 +1,8 @@
-import { Flex, Text, Heading, Card, Inset, Strong, Grid } from '@radix-ui/themes'
+import { Flex, Text, Heading, Card, Inset, Strong } from '@radix-ui/themes'
 import './App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTelegram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRightArrowLeft, faChartLine } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
 import Canvas from './Canvas';
 
 function round(value: number, decimals: number) {
@@ -11,57 +10,9 @@ function round(value: number, decimals: number) {
 }
 
 function App() {
-  const [price, setPrice] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = 'https://api.seer.coinhall.org/api/coinhall/pools?chains=neutron&addresses=neutron14mssc4ycudkmznstwtcm3assr4gt40nq38x58ap574thgrxgzr0qpxhu9m&limit=1&verified=false';
-        const response = await fetch(url, {
-          headers: {
-            'Host': 'api.seer.coinhall.org',
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0',
-            'Accept': '*/*',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Referer': 'https://coinhall.org/',
-            'Origin': 'https://coinhall.org',
-            'Connection': 'keep-alive',
-            'Sec-Fetch-Dest': 'empty',
-            'Sec-Fetch-Mode': 'cors',
-            'Sec-Fetch-Site': 'same-site',
-            'TE': 'trailers',
-          }
-        });
-        const json = await response.json();
-        const assets = json.pools[0].assets;
-        const asset = assets.find((a: any) => a.name === 'Goddard');
-        setPrice(round(asset.usdPrice, 7));
-      } catch (error) {
-        setPrice('---');
-      }
-    };
-
-    fetchData();
-  });
-
   return (
     <div className="app">
       <Canvas />
-      <Flex gap="4" justify="end" align="center">
-        <a
-          className="price-link"
-          href="https://coinhall.org/neutron/neutron14mssc4ycudkmznstwtcm3assr4gt40nq38x58ap574thgrxgzr0qpxhu9m"
-          target="_blank"
-        >
-          <div className="price fa-border">
-            {price === undefined
-              ? '---'
-              : <Heading size="3">${price}</Heading>
-            }
-          </div>
-        </a>
-      </Flex>
       <Flex gap="4" justify="center" align="center">
         <img className="header-goddard" src="logo.png" />
       </Flex>
