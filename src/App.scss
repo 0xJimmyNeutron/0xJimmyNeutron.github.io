@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+body {
+  height: 100%;
+  background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.header-goddard {
+  height: 360px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.social-icons {
+  padding-top: 16px;
+}
+
+.social-icon-link {
+  height: 32px;
+  padding: 0 2;
+  text-decoration: none;
+  color: inherit;
+
+  .social-icon {
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #555;
+      transition: 0.2s;
+    }
+  }
+}
+
+.price-link {
+  text-decoration: none;
+  color: inherit;
+  margin: 20px;
+
+  .price {
+    border-radius: 16px;
+    padding: 12px 20px;
+    
+    &:hover {
+      cursor: pointer;
+      background-color: #555;
+      transition: 0.2s;
+    }
+  }
+}
+
+.line-break {
+  width: 100%;
+  height: 1px;
+  margin: 72px 0;
+  background-color: #888;
+}
+
+.how-to-buy {
+  margin: 0 72px 72px;
+}
+
+.tokenomics {
+  margin: 0 72px 72px;
+}
